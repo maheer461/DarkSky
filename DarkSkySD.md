@@ -23,12 +23,12 @@ public class DarkSkySD {
     }
 
     @When("^I expand todays timeline$")
-    public void expandTimeline()throws Exception{darkSkyMainPage.clickExpandTimeline(); Thread.sleep(3000);}
+    public void expandTimeline()throws InterruptedException{darkSkyMainPage.clickExpandTimeline();}
 
     @Then("^I verify lowest and highest temp is displayed correctly$")
     public void verifyTemp(){
-        Assert.assertEquals(darkSkyMainPage.getMaxTemp(), darkSkyMainPage.getHighTemp());
-        Assert.assertEquals(darkSkyMainPage.getMinTemp(), darkSkyMainPage.getLowTemp());
+      Assert.assertEquals(darkSkyMainPage.getMinTemp(), darkSkyMainPage.getHighTemp());
+      Assert.assertEquals(darkSkyMainPage.getMaxTemp(), darkSkyMainPage.getLowTemp());
     }
 
     @Then("^I verify current temp is not greater or less then temps from daily timeline$")

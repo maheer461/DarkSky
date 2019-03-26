@@ -34,9 +34,11 @@ public class BasePage {
 		return element;
 	}
 
-	public void scrollIntoView(By locator){
-        WebElement element = SharedSD.getDriver().findElement(locator);
+	public void scrollIntoView(By locator)throws InterruptedException{
+		SharedSD.getDriver().manage().window().maximize();
+        WebElement element = webAction(locator);
         ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(2000);
         element.click();
     }
 

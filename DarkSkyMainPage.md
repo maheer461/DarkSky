@@ -14,23 +14,20 @@ public class DarkSkyMainPage extends BasePage {
 
     private By tempsLine = By.xpath("//div[@class='temps']//span//span");
     private By expandTimeline = By.xpath("//a[1]//span[2]//span[2]");
-    private By minTemp = By.xpath("//a[@class='day revealed']//span[@class='tempRange']/child::[1]");
-    private By maxTemp = By.xpath("//a[@class='day revealed']//span[@class='tempRange']/child::[3]");
-    private By highTemp = By.xpath("//div[@class='dayDetails revealed']//span[@class='highTemp swip']/child::[1]");
-    private By lowTemp = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']/child::[1]");
+    private By minTemp = By.xpath("//a[@class='day revealed']//span[@class='minTemp']");
+    private By maxTemp = By.xpath("//a[@class='day revealed']//span[@class='maxTemp']");
+    private By highTemp = By.xpath("//div[@class='dayDetails revealed']//span[@class='highTemp swip']//span[@class='temp']");
+    private By lowTemp = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']//span[@class='temp']");
     private By currentTemp = By.xpath("//span[@class='summary swap']");
 
 
-    public void clickExpandTimeline(){scrollIntoView(expandTimeline);}
+    public void clickExpandTimeline()throws InterruptedException{scrollIntoView(expandTimeline);}
     public String getMinTemp(){return getTextFromElement(minTemp);}
     public String getMaxTemp(){return getTextFromElement(maxTemp);}
     public String getHighTemp(){return getTextFromElement(highTemp);}
     public String getLowTemp(){return getTextFromElement(lowTemp);}
 
     public void verifyTempLine(){
-
-        //String getCurrentTemp = String.valueOf(currentTemp).replace("°", "");
-        //int intTemp = Integer.valueOf(getCurrentTemp.substring(0, getCurrentTemp.length()-1));
 
         String getCurrentTemp = getTextFromElement(currentTemp).substring(0, 1);
         int intTemp = Integer.parseInt(getCurrentTemp);
